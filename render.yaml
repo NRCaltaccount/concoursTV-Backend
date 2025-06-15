@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: concours-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URI
+        value: mongodb+srv://Lucas:qykwg8cMPLUx25Xr@concourssmscluster.6jxoibt.mongodb.net/ConcoursSMSCluster?retryWrites=true&w=majority
+      - key: PORT
+        value: 10000
