@@ -24,13 +24,16 @@ mongoose.connect(process.env.MONGO_URI, {
 .catch(err => console.error('❌ Erreur MongoDB:', err));
 
 app.get('/concours', async (req, res) => {
+  console.log("✅ Requête reçue sur /concours");
   try {
     const concours = await Concours.find().sort({ dateAjout: -1 });
     res.json(concours);
   } catch (err) {
+    console.error("❌ Erreur MongoDB:", err); // <--- affiche l'erreur réelle
     res.status(500).json({ message: 'Erreur serveur lors de la récupération' });
   }
 });
+
 
 app.post('/concours', async (req, res) => {
   try {
