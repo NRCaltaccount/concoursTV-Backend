@@ -7,6 +7,7 @@ import cors from 'cors';
 import Filter from 'bad-words';
 
 import Concours from './models/concours.js';
+console.log("✅ Modèle Concours chargé :", typeof Concours);
 
 const app = express();
 const filter = new Filter();
@@ -29,11 +30,10 @@ app.get('/concours', async (req, res) => {
     const concours = await Concours.find().sort({ dateAjout: -1 });
     res.json(concours);
   } catch (err) {
-    console.error("❌ Erreur MongoDB:", err); // <--- affiche l'erreur réelle
+    console.error("❌ Erreur dans /concours :", err);
     res.status(500).json({ message: 'Erreur serveur lors de la récupération' });
   }
 });
-
 
 app.post('/concours', async (req, res) => {
   try {
@@ -63,7 +63,7 @@ app.post('/concours', async (req, res) => {
     res.status(201).json(nouveauConcours);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: 'Erreur serveur lors de l\'ajout' });
+    res.status(500).json({ message: 'Erreur serveur lors de l'ajout' });
   }
 });
 
