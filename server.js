@@ -11,7 +11,9 @@ import Concours from './models/concours.js';
 const app = express();
 const filter = new Filter();
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://ton-site.netlify.app'
+}));
 app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI, {
