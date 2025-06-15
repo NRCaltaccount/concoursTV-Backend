@@ -12,7 +12,7 @@ const app = express();
 const filter = new Filter();
 
 app.use(cors({
-  origin: 'https://ton-site.netlify.app'
+  origin: 'https://ubiquitous-cannoli-ae100e.netlify.app/'
 }));
 app.use(express.json());
 
